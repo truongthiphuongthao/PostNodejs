@@ -1,8 +1,30 @@
 <html>
 	<head>
 		<title>Page index </title>
+		<style>
+			div {
+			  border-style: solid;
+			  border-width: thin;
+			}
+		</style>
 	</head>
 	<body>
-		<p> Hello </p>
+		<center>
+			<% posts.forEach(function(post){%>
+				<div>
+					<p><%= post.post_content %></p>
+					<% post.image_links.forEach(function(image){%>
+						<img src="<%= image %>" alt="Trulli" width="300" height="300">
+					<% }) %>
+				</div>
+			<% }) %> 
+			<br>
+			<% comments.forEach(function(comment){%>
+				<div>
+					<p><%= comment %></p>
+				</div>
+			<% }) %>
+		</center>
+
 	</body>
 </html>

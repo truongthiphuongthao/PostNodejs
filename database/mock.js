@@ -7,7 +7,8 @@ async function main(){
 
 		let post = new Model.Post({
 			post_content: `hello ${i}-th post`,
-			image_links: ["https://mongoosejs.com/docs/populate.html"]
+			//image_links: ["https://www.w3schools.com/html/pic_trulli.jpg"]
+			image_links: ["https://www.w3schools.com/html/pic_trulli.jpg", "https://www.w3schools.com/html/img_girl.jpg", "https://www.w3schools.com/html/img_chania.jpg"]
 		})
 		await post.save()
 		console.log(`Inserted post ${i}-th`)
