@@ -17,13 +17,14 @@
 						<img src="<%= image %>" alt="Trulli" width="300" height="300">
 					<% }) %>
 				</div>
+			    <% comments.forEach(function(comment){ %>
+			    	<% if (comment.post_id == post._id){ %>
+			    		<p><%= comment.comment_details %></p>
+			    	<% } %>
+			 	<% }) %>
 			<% }) %> 
 			<br>
-			<% comments.forEach(function(comment){%>
-				<div>
-					<p><%= comment %></p>
-				</div>
-			<% }) %>
+		
 		</center>
 
 	</body>
