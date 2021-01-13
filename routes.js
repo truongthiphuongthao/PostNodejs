@@ -1,22 +1,42 @@
 
 const Router = require('express').Router()
 const db = require('./database/models')
+const { ObjectId } = require('mongodb');
 
 Router.get('/', async (req, res) =>{
 
 	// get all post
 	let post = await db.Post.find({})
+
 	// get all comment
 	let comment = await db.Comment.find({})
-	// for(let i=0; i<post.length; i++){
-	// 	let k = await db.Comment.find({post_id: post[i]._id})
-	// 	console.log(k)
-	// }
+
 	res.render('index', {
 		posts: post,
 		comments: comment
 	})
-	// console.log(post)
-	//res.render('index')
+})
+// delete post
+Router.delete('/:postId', async (req, res) => {
+	try{
+		let postId = ObjectId(req.params.postId)
+		let comments = await db.Comment.find({post_id: postId})
+		if(comments != null){
+			await db.Post.findByIdAndDelete({_id: postId})
+			console.log("Deleted successfully post")
+			for(let comment of comments){
+				await db.Comment.findByIdAndDelete({_id: comment.post_id})
+			}
+			console.log("Deleted successfully comment")
+		}
+		else{
+			await db.Post.findByIdAndDelete({_id: postId})
+			console.log("Deleted successfully post")
+		}
+
+	}catch(err){
+		console.log(err)
+		throw err
+	}
 })
 module.exports = Router

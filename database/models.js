@@ -10,7 +10,7 @@ const Post = Mongoose.model('Post', new Mongoose.Schema({
 }))
 
 const Comment = Mongoose.model('Comment', new Mongoose.Schema({
-	comment_details: [String],
+	comment_details: String,
 	post_id : Schema.Types.ObjectId
 }))
 

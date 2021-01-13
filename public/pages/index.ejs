@@ -7,25 +7,42 @@
 			  border-width: thin;
 			}
 		</style>
+		 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	</head>
 	<body>
 		<center>
 			<% posts.forEach(function(post){%>
-				<div>
+				<div style="margin:20px; padding: 20px">
+					<input id="delete-btn" class="btn btn-secondary" type="button" value="DELETE" onclick ="handleDeletePost('<%= post._id %>')">
+					<p><%= post._id %></p>
 					<p><%= post.post_content %></p>
 					<% post.image_links.forEach(function(image){%>
 						<img src="<%= image %>" alt="Trulli" width="300" height="300">
 					<% }) %>
 				</div>
-			    <% comments.forEach(function(comment){ %>
-			    	<% if (comment.post_id == post._id){ %>
-			    		<p><%= comment.comment_details %></p>
-			    	<% } %>
-			 	<% }) %>
+				<% comments.forEach(function(comment){ %>
+					<% if(post._id.toString() == comment.post_id.toString()) { %>
+					<div style="margin: 20px">
+						<p> <%= comment.comment_details %></p>
+					</div>
+					<% } %>
+				<% }) %>
 			<% }) %> 
 			<br>
-		
 		</center>
-
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('#delete-btn').click(function(){
+					$.ajax({
+						url: '/' + value,
+						type: 'DELETE',
+						success: function(result){
+							$(location).attr('href', '/')
+						}
+					})	
+				})
+			})
+		</script>
 	</body>
 </html>
