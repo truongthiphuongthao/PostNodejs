@@ -4,23 +4,25 @@ const db = require('./database/models')
 const { ObjectId } = require('mongodb');
 
 Router.get('/', async (req, res) =>{
-
 	// get all post
 	let post = await db.Post.find({})
-
+	console.log(post)
 	// get all comment
 	let comment = await db.Comment.find({})
-
+	console.log(comment)
 	res.render('index', {
 		posts: post,
 		comments: comment
 	})
 })
+
 // delete post
-Router.delete('/:postId', async (req, res) => {
+Router.delete('/delete-post/:postId', async (req, res) => {
 	try{
 		let postId = ObjectId(req.params.postId)
+		console.log(postId)
 		let comments = await db.Comment.find({post_id: postId})
+		console.log(comments)
 		if(comments != null){
 			await db.Post.findByIdAndDelete({_id: postId})
 			console.log("Deleted successfully post")

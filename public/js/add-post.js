@@ -26,7 +26,7 @@ $(document).ready(() => {
           },
           success: function(res){
             alert(res)
-             window.location.href = "/"
+            window.location.href = "/"
           }
         })
       })

@@ -2,9 +2,8 @@
 <html>
 	<head>
 		 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-		 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	   <script src="./js/add-post.js" charset="UTF-8"></script>
+	   <script src="../js/index.js" charset="UTF-8"></script>
 	</head>
 	<body>
 		<h1 style="text-align:center;"> Update Post </h1>
@@ -17,27 +16,18 @@
 				<br>
 				<label> <strong> Image link </strong> </label>
 				<br>
-        <div class="form-row">
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Enter image links" id="image_link" onfocus="this.value=''">
-          </div>
-          <div class="col">
-              <button type="button" class="btn btn-primary" id ="add_link">Add Link</button>
-          </div>
-        </div>
         <% post_id.image_links.forEach(function(image_link){ %>
             <div>
               <table class="table" id="main-list">
                 <tr>
-                  <td> <%= image_link %> </td>
-                  <td> <button type="button" class="btn btn-secondary" id="delete_link_post">Delete</button> </td>
+                  <td id="update_image_link"> <%= image_link %> </td>
                 </tr>
               </table>
             </div>
           <% }) %>
 			</form>
 			<hr>
-					<button type="button" class="btn btn-primary" id="save_post">Save Post</button>
+					<button type="button" class="btn btn-primary" id="save_post_update">Save Post</button>
 			</div>
 	</body>
 </html>

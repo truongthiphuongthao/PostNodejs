@@ -4,7 +4,8 @@
 		 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	   <script src="./js/add-post.js" charset="UTF-8"></script>
+	   <!-- <script src="../js/add-post.js" charset="UTF-8"></script> -->
+		  <script src="../js/index.js" charset="UTF-8"></script>
 	</head>
 	<body>
 		<h1 style="text-align:center;"> Add Post </h1>
@@ -22,7 +23,7 @@
 			      <input type="text" class="form-control" placeholder="Enter image links" id="image_link" onfocus="this.value=''">
 			    </div>
 			    <div class="col">
-			     		<button type="button" class="btn btn-primary" id ="add_link">Add Link</button>
+			     		<button type="button" class="btn btn-primary" id ="add_link" onclick="getImageLink()">Add Link</button>
 			    </div>
 			  </div>
 				<div>
@@ -31,7 +32,7 @@
 				</div>
 			</form>
 			<hr>
-					<button type="button" class="btn btn-primary" id="save_post">Save Post</button>
+					<button type="button" class="btn btn-primary" id="save_post" onclick="savePost()">Save Post</button>
 			</div>
 	</body>
 </html>
