@@ -98,4 +98,31 @@ Router.post('/update-post/:id', async(req, res) => {
 	}
 })
 
+// save comment
+Router.post('/save-comment/:id', async(req, res) => {
+	try{
+		let post_id = req.body.post_id
+		let comment_details = req.body.comment_details
+		let newComment = await new db.Comment({
+			post_id: post_id,
+			comment_details: comment_details
+		})
+		await newComment.save()
+		res.send("Create Comment successfully")
+	}catch(err){
+		console.log(err)
+		throw err
+	}
+})
+
+Router.delete('/delete-comment/:id', async(req, res) => {
+	try{
+		let _id = req.body._id
+		await db.Comment.findByIdAndDelete({_id: _id})
+		res.send("Delete comment successfully")
+	}catch(err){
+		console.log(err)
+		throw err
+	}
+})
 module.exports = Router

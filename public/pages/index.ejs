@@ -10,6 +10,7 @@
 		 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		 <script src="../js/post.js" charset="UTF-8"></script>
+		 <script src="../js/comment.js" charset="UTF-8"></script>
 	</head>
 	<body>
 		<div style="text-align: center; border-style: hidden; margin: 24px">
@@ -29,24 +30,28 @@
 						<img src="<%= image %>" alt="Trulli" width="300" height="300">
 					<% }) %>
 					<div style="margin-top: 5px; border: none; padding: 10px;">
-						<input id="comment-post" class="btn btn-secondary" type="button" value="COMMENT" style="background-color: green;">
+						<input id="comment-post" class="btn btn-secondary" type="button" value="COMMENT" style="background-color: green;" onclick="handleAddComment('<%= post._id %>')">
 					</div>
-					<div>
-						<p>Hello</p>
+					<div id="<%= post._id %>" style="border: none;">
 					</div>
 				</div>
-
 				<% comments.forEach(function(comment){ %>
 					<% if(post._id.toString() == comment.post_id.toString()) { %>
 					<div style="margin: 20px">
-						<p> <%= comment.comment_details %></p>
+						<table>
+						<tr>
+						<td><p><%= comment.comment_details %></p></td>
+						<td>
+							<p style="color: red; padding: 10px; font-weight: bold;" onclick="handleDeleteComment('<%= comment._id %>')"> X </p></td>
+						</tr>
+						</table>
 					</div>
 					<% } %>
 				<% }) %>
 			<% }) %>
 			<br>
-		</center>
 	</div>
 		<hr>
+	</center>
 	</body>
 </html>

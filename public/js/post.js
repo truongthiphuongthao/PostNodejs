@@ -25,8 +25,8 @@ function getImageLink(){
 			arr_link.push(image_link)
 			$('#main-list').append(`
 				<tr id="${image_link}">
-							<td>${image_link}</td>
-							<td> <button type="button" class="btn btn-secondary" onclick="deleteLink('${image_link}')"> Delete</button> </td>
+					<td>${image_link}</td>
+					<td> <button type="button" class="btn btn-secondary" onclick="deleteLink('${image_link}')"> Delete</button> </td>
 				</tr>`
 			)
 		}
