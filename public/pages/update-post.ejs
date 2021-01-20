@@ -3,7 +3,7 @@
 	<head>
 		 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	   <script src="../js/index.js" charset="UTF-8"></script>
+	   <script src="../js/post.js" charset="UTF-8"></script>
 	</head>
 	<body>
 		<h1 style="text-align:center;"> Update Post </h1>
@@ -12,7 +12,7 @@
 			<form style="width:100%">
 				<label> <strong> Post content </strong> </label>
 				<br>
-				<textarea rows="10" cols="94" name="comment" form="usrform" id="post_content"> <%= post_id.post_content %> </textarea>
+				<textarea rows="10" cols="94" name="comment" form="usrform" id="post_content_update"><%= post_id.post_content %></textarea>
 				<br>
 				<label> <strong> Image link </strong> </label>
 				<br>
@@ -27,7 +27,7 @@
           <% }) %>
 			</form>
 			<hr>
-					<button type="button" class="btn btn-primary" id="save_post_update">Save Post</button>
+			<button type="button" class="btn btn-primary" id="save_post_update" onclick="updatePost('<%= post_id._id%>')">Save Post</button>
 			</div>
 	</body>
 </html>

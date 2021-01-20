@@ -81,15 +81,21 @@ Router.post('/add-post', async(req, res) => {
 	}
 })
 
-// Router.get('/update-post/:id', async(req, res) => {
-// 	try{
-// 		let id = req.body.id
-// 		console.log(id)
-//
-// 	}catch(err){
-// 		console.log(err)
-// 		throw err
-// 	}
-// })
+Router.post('/update-post/:id', async(req, res) => {
+	try{
+		let id = req.body.id
+		let post_content = req.body.post_content
+		await db.Post.findByIdAndUpdate(
+		{_id: id},
+		{$set: {post_content: post_content}},
+		{useFindAndModify : false}
+		)
+		res.send("Update successfully")
+		
+	}catch(err){
+		console.log(err)
+		throw err
+	}
+})
 
 module.exports = Router
