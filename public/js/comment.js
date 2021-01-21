@@ -1,5 +1,5 @@
 function handleAddComment(postId){
-  $( "#"+postId ).append(`
+  $( "#" + postId ).append(`
    <div class="input-group mb-3">
       <input type="text" class="form-control" id="inputComment" placeholder="Enter comment">
       <div class="input-group-append">
@@ -12,7 +12,6 @@ function handleAddComment(postId){
 
 function saveComment(postId){
   let comment_details = $('#inputComment').val()
-  alert(comment_details)
   $.ajax({
     url: '/save-comment/' + postId,
     method: 'POST',
@@ -42,4 +41,27 @@ function handleDeleteComment(comment_id){
       window.location.href = "/"
     }
   })
+}
+
+// edit comment
+function handleEditComment(comment_id) {
+  alert($('#' + comment_id).prop('disabled'))
+  if($('#' + comment_id).prop('disabled')){
+    ($('#' + comment_id).prop('disabled', false))
+  }
+  else{
+      ($('#' + comment_id).prop('disabled', true))
+      let comment_details = $('#' + comment_id).val()
+      $.ajax({
+        url: '/update-comment/' + comment_id,
+        method: 'POST',
+        data: {
+          _id: comment_id,
+          comment_details: comment_details
+        },
+        success:function(res){
+          alert(res)
+        }
+      })
+  }
 }

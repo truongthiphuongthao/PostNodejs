@@ -91,7 +91,7 @@ Router.post('/update-post/:id', async(req, res) => {
 		{useFindAndModify : false}
 		)
 		res.send("Update successfully")
-		
+
 	}catch(err){
 		console.log(err)
 		throw err
@@ -120,6 +120,24 @@ Router.delete('/delete-comment/:id', async(req, res) => {
 		let _id = req.body._id
 		await db.Comment.findByIdAndDelete({_id: _id})
 		res.send("Delete comment successfully")
+	}catch(err){
+		console.log(err)
+		throw err
+	}
+})
+
+// edit comments
+Router.post('/update-comment/:id', async(req, res) =>{
+	try{
+		let _id = req.body._id
+		let comment_details = req.body.comment_details
+		await db.Comment.findByIdAndUpdate(
+			{_id: _id},
+			{$set: {comment_details: comment_details}},
+			{useFindAndModify : false}
+		)
+		console.log("Update comment successfully")
+		res.send("Update comment successfully")
 	}catch(err){
 		console.log(err)
 		throw err

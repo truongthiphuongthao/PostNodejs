@@ -40,9 +40,15 @@
 					<div style="margin: 20px">
 						<table>
 						<tr>
-						<td><p><%= comment.comment_details %></p></td>
 						<td>
-							<p style="color: red; padding: 10px; font-weight: bold;" onclick="handleDeleteComment('<%= comment._id %>')"> X </p></td>
+							<input type="text" id="<%= comment._id %>" name="lname" value="<%= comment.comment_details %>" disabled>
+						</td>
+						<td>
+							<p style="color: red; padding: 10px; font-weight: bold;" onclick="handleDeleteComment('<%= comment._id %>')"> X </p>
+						</td>
+						<td>
+							<p style="color: blue; padding: 10px; font-weight: bold;" onclick="handleEditComment('<%= comment._id %>')"> Edit </p>
+						</td>
 						</tr>
 						</table>
 					</div>
